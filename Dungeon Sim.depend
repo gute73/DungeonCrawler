@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1536095819 source:c:\users\mark\cprojects\dungeon sim\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<ctime>
+	<cctype>
+
