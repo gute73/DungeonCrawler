@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1537216752 source:c:\users\mark\cprojects\dungeon sim\creature.cpp
+	"Creature.h"
+
+1537216668 c:\users\mark\cprojects\dungeon sim\creature.h
+	<string>
+
+1537211847 source:c:\users\mark\cprojects\dungeon sim\location.cpp
+	"Location.h"
+
+1537048905 c:\users\mark\cprojects\dungeon sim\location.h
+
+1537211728 source:c:\users\mark\cprojects\dungeon sim\main.cpp
+	<iostream>
+	<string>
+	<cstdlib>
+	<ctime>
+	<cctype>
+	"Creature.h"
+	"Monster.h"
+	"Player.h"
+	"Location.h"
+
+1537213044 c:\users\mark\cprojects\dungeon sim\monster.h
+	"Creature.h"
+
+1537213665 c:\users\mark\cprojects\dungeon sim\player.h
+	"Creature.h"
+
+1537217675 source:c:\users\mark\cprojects\dungeon sim\monster.cpp
+	"Monster.h"
+
+1537218185 source:c:\users\mark\cprojects\dungeon sim\player.cpp
+	"Player.h"
+
