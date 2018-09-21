@@ -2,7 +2,7 @@
 
 int getRandomNumber(int min, int max);
 
-Creature::Creature(std::string name, int health, int attack, int defense, double prob_crit, double prob_dodge, int gold)
+Creature::Creature(std::string &name, int health, int attack, int defense, double prob_crit, double prob_dodge, int gold)
     : m_name(name), m_health(health), m_attack(attack), m_defense(defense), m_prob_crit(prob_crit), m_prob_dodge(prob_dodge), m_gold(gold) {}
 
 void Creature::reduceHealth(int reduce)

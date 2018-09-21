@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Dungeon Sim" />
+		<Option title="DungeonCrawler" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -35,11 +35,11 @@
 		<Unit filename="Creature.cpp" />
 		<Unit filename="Creature.h" />
 		<Unit filename="Location.cpp" />
+		<Unit filename="Location.h" />
 		<Unit filename="Monster.cpp" />
 		<Unit filename="Monster.h" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h" />
-		<Unit filename="location.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

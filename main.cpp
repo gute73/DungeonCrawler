@@ -3,10 +3,17 @@
 #include <cstdlib>
 #include <ctime>
 #include <cctype>
+#include <array>
+#include <memory>
 #include "Creature.h"
 #include "Monster.h"
 #include "Player.h"
 #include "Location.h"
+#include "Tunnel.h"
+#include "Room.h"
+#include "Shop.h"
+#include "TreasureRoom.h"
+#include "Nest.h"
 
 
 int getRandomNumber(int min, int max)
@@ -15,11 +22,7 @@ int getRandomNumber(int min, int max)
 	return static_cast<int>(rand() * fraction * (max - min + 1) + min);
 }
 
-//build dungeon
-Location locationArray[25];
-
-
-
+// combat
 void attackMonster(Player &p, Monster &m)
 {
     bool is_crit = p.critHit();
@@ -107,6 +110,7 @@ void fightMonster(Player &p)
     }
 }
 
+//input class at setup
 int inputClass()
 {
     std::string class_selection;
@@ -130,6 +134,44 @@ int main()
 {
 	srand(static_cast<unsigned int>(time(0)));
 	rand();
+
+	//build dungeon
+    constexpr unsigned int dungeon_size = 25;
+    std::array<std::shared_ptr<Location>, dungeon_size> dungeon { std::make_shared<Shop>(), std::make_shared<Room>(),
+        std::make_shared<Tunnel>(), std::make_shared<TreasureRoom>(), std::make_shared<Room>(), std::make_shared<Tunnel>(),
+        std::make_shared<Tunnel>(), std::make_shared<Tunnel>(), std::make_shared<Room>(), std::make_shared<Tunnel>(),
+        std::make_shared<Tunnel>(), std::make_shared<Room>(), std::make_shared<Tunnel>(), std::make_shared<Tunnel>(),
+        std::make_shared<Tunnel>(), std::make_shared<Tunnel>(), std::make_shared<Tunnel>(), std::make_shared<Tunnel>(),
+        std::make_shared<Tunnel>(), std::make_shared<Tunnel>(), std::make_shared<Shop>(), std::make_shared<Room>(),
+        std::make_shared<Tunnel>(), std::make_shared<Tunnel>(), std::make_shared<Nest>() };
+
+    //connect rooms
+    dungeon.at(0)->initLocation(dungeon,-1,-1,1,-1);
+    dungeon.at(1)->initLocation(dungeon,-1,6,2,0);
+    dungeon.at(2)->initLocation(dungeon,-1,-1,3,1);
+    dungeon.at(3)->initLocation(dungeon,-1,-1,-1,2);
+    dungeon.at(4)->initLocation(dungeon,-1,9,-1,-1);
+    dungeon.at(5)->initLocation(dungeon,-1,10,6,-1);
+    dungeon.at(6)->initLocation(dungeon,1,-1,7,5);
+    dungeon.at(7)->initLocation(dungeon,-1,12,8,6);
+    dungeon.at(8)->initLocation(dungeon,-1,13,9,7);
+    dungeon.at(9)->initLocation(dungeon,4,-1,-1,8);
+    dungeon.at(10)->initLocation(dungeon,5,-1,11,-1);
+    dungeon.at(11)->initLocation(dungeon,-1,16,12,10);
+    dungeon.at(12)->initLocation(dungeon,7,-1,-1,11);
+    dungeon.at(13)->initLocation(dungeon,8,-1,14,-1);
+    dungeon.at(14)->initLocation(dungeon,-1,19,-1,13);
+    dungeon.at(15)->initLocation(dungeon,-1,-1,16,-1);
+    dungeon.at(16)->initLocation(dungeon,11,21,17,15);
+    dungeon.at(17)->initLocation(dungeon,-1,-1,18,16);
+    dungeon.at(18)->initLocation(dungeon,-1,-1,19,17);
+    dungeon.at(19)->initLocation(dungeon,14,-1,-1,18);
+    dungeon.at(20)->initLocation(dungeon,-1,-1,21,-1);
+    dungeon.at(21)->initLocation(dungeon,16,-1,22,20);
+    dungeon.at(22)->initLocation(dungeon,-1,-1,23,21);
+    dungeon.at(23)->initLocation(dungeon,-1,-1,24,22);
+    dungeon.at(24)->initLocation(dungeon,-1,-1,-1,23);
+
 
 	// create character
 	std::cout << "Name your character: ";

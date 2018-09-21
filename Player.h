@@ -46,7 +46,7 @@ public:
 
     double calcProbDodge(int agi);
 
-    Player(std::string name, int char_class);
+    Player(std::string &name, int char_class);
 
     void levelUp();
 

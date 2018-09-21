@@ -15,7 +15,7 @@ protected:
     int m_gold;
 
 public:
-    Creature(std::string name, int health, int attack, int defense, double prob_crit, double prob_dodge, int gold);
+    Creature(std::string &name, int health, int attack, int defense, double prob_crit, double prob_dodge, int gold);
 
     std::string& getName() { return m_name; }
 

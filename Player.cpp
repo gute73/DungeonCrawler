@@ -60,7 +60,7 @@ double Player::calcProbDodge(int agi)
     return agi*0.02;
 }
 
-Player::Player(std::string name, int char_class)
+Player::Player(std::string &name, int char_class)
     : Creature(name, 25, calcAttack(class_data[char_class].strength), calcDefense(class_data[char_class].constitution),
         calcProbCrit(class_data[char_class].dexterity), calcProbDodge(class_data[char_class].agility), 0), m_level(1), m_class(class_data[char_class].class_name), m_strength(class_data[char_class].strength),
         m_intelligence(class_data[char_class].intelligence), m_wisdom(class_data[char_class].wisdom), m_dexterity(class_data[char_class].dexterity),
