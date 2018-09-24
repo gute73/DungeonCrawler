@@ -5,6 +5,8 @@
 
 class Room: public Location
 {
+public:
+    virtual void whereAmI();
 
 };
 

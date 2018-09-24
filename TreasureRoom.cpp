@@ -1,11 +1,8 @@
-#ifndef TREASUREROOM_H
-#define TREASUREROOM_H
+#include "TreasureRoom.h"
+#include <iostream>
 
-#include "Location.h"
-
-class TreasureRoom: public Location
+void TreasureRoom::whereAmI()
 {
-
-};
-
-#endif // TREASUREROOM_H
+    std::cout << "You emerge from the passageway into a massive, ornate chamber. A dragon is curled asleep before you, guarding a large treasure chest. "
+        "As you enter he stirs.\n";
+}

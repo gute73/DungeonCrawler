@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <iostream>
 
 int Player::calcAttack(int str)
 {
@@ -60,16 +61,15 @@ double Player::calcProbDodge(int agi)
     return agi*0.02;
 }
 
-Player::Player(std::string &name, int char_class)
+Player::Player(std::string &name, int char_class, std::shared_ptr<Location> pos)
     : Creature(name, 25, calcAttack(class_data[char_class].strength), calcDefense(class_data[char_class].constitution),
         calcProbCrit(class_data[char_class].dexterity), calcProbDodge(class_data[char_class].agility), 0), m_level(1), m_class(class_data[char_class].class_name), m_strength(class_data[char_class].strength),
         m_intelligence(class_data[char_class].intelligence), m_wisdom(class_data[char_class].wisdom), m_dexterity(class_data[char_class].dexterity),
-        m_constitution(class_data[char_class].constitution), m_agility(class_data[char_class].agility) {}
+        m_constitution(class_data[char_class].constitution), m_agility(class_data[char_class].agility), m_location(pos), m_direction('e') {}
 
 void Player::levelUp()
 {
     ++m_level;
-    ++m_defense;
 }
 
 void Player::setAttack(int str)
@@ -90,6 +90,140 @@ void Player::setProbCrit(int dex)
 void Player::setProbDodge(int agi)
 {
     m_prob_dodge = Player::calcProbDodge(agi);
+}
+
+char Player::left()
+{
+    switch (m_direction)
+    {
+        case 'n':
+            return 'w';
+        case 'e':
+            return 'n';
+        case 's':
+            return 'e';
+        default:
+            return 's';
+    }
+}
+
+char Player::right()
+{
+    switch (m_direction)
+    {
+        case 'n':
+            return 'e';
+        case 'e':
+            return 's';
+        case 's':
+            return 'w';
+        default:
+            return 'n';
+    }
+}
+
+char Player::behind()
+{
+    switch (m_direction)
+    {
+        case 'n':
+            return 's';
+        case 'e':
+            return 'w';
+        case 's':
+            return 'n';
+        default:
+            return 'e';
+    }
+}
+
+void Player::changeDirection(char turn)
+{
+    if (turn == 'l')
+        m_direction = left();
+    else if (turn == 'r')
+        m_direction = right();
+    else
+        m_direction = behind();
+}
+
+void Player::movePlayer()
+{
+    bool inv_ahead = m_location->invalidPath(m_direction);
+    bool inv_left = m_location->invalidPath(left());
+    bool inv_right = m_location->invalidPath(right());
+    bool inv_behind = m_location->invalidPath(behind());
+    char choice;
+    bool valid = true;
+    do
+    {
+        if (!inv_ahead)
+            std::cout << "There is a pathway straight ahead. ";
+        if (!inv_left)
+        {
+            if (!inv_right)
+                std::cout << "There are paths to the left and the right. ";
+            else
+                std::cout << "There is a path to the left. ";
+        }
+        else if (!inv_right)
+            std::cout << "There is a path to the right.\n";
+        std::cout << "Enter 'a' to move ahead, 'l' to move left, 'r' to move right, or 'b' to turn around and move back.\n";
+        std::cin >> choice;
+        switch (choice)
+        {
+            case 'a': case 'A':
+                if (inv_ahead)
+                {
+                    std::cout << "That is not a valid direction.\n";
+                    valid = false;
+                }
+                break;
+            case 'l': case 'L':
+                if (inv_left)
+                {
+                    std::cout << "That is not a valid direction.\n";
+                    valid = false;
+                }
+                break;
+            case 'r': case 'R':
+                if (inv_right)
+                {
+                    std::cout << "That is not a valid direction.\n";
+                    valid = false;
+                }
+                break;
+            case 'b': case 'B':
+                if (inv_behind)
+                {
+                    std::cout << "That is not a valid direction.\n";
+                    valid = false;
+                }
+                break;
+        }
+    } while ((choice != 'a') && (choice != 'A') && (choice != 'l') && (choice != 'L') && (choice != 'r')
+             && (choice != 'R') && (choice != 'b') && (choice != 'B') && (!valid));
+
+    switch (choice)
+    {
+        case 'a': case 'A':
+            m_location = m_location->getPath(m_direction);
+            break;
+        case 'l': case 'L':
+            changeDirection('l');
+            m_location = m_location->getPath(m_direction);
+            break;
+        case 'r': case 'R':
+            changeDirection('r');
+            m_location = m_location->getPath(m_direction);
+            break;
+        case 'b': case 'B':
+            changeDirection('b');
+            m_location = m_location->getPath(m_direction);
+            break;
+    }
+
+    m_location->whereAmI();
 }
 
 Player::ClassData Player::class_data[Player::CLASS_MAX_CLASSES]

@@ -67,7 +67,7 @@ void attackPlayer(Player &p, Monster &m)
         std::cout << "The " << m.getName() << " hit you for " << damage << " damage.\n";
     }
     else
-        std::cout << "You dodged the attack!";
+        std::cout << "You dodged the attack!\n";
 }
 
 void fightMonster(Player &p)
@@ -178,24 +178,20 @@ int main()
 	std::string name;
 	std::cin >> name;
     int char_class = inputClass();
-    Player p(name, char_class);
+    Player p(name, char_class, dungeon[15]);
 	std::cout << "\nYou are the " <<  p.getClass() << " " << p.getName() << ".\n";
     std::cout << "Stats: Str: " << p.getStr() << " Int: " << p.getInt() << " Wis: " << p.getWis() << " Dex: " << p.getDex() << " Con: " << p.getCon() <<
     " Agi: " << p.getAgi() << " Attack: " << p.getAttack() << " Defense: " << p.getDefense() << '\n';
 
-    // fight!
+    // begin!
+    p.getLocation()->whereAmI();
     do
     {
-        fightMonster(p);
-    } while (/*!p.hasWon() && */!p.isDead());
+        p.movePlayer();
+        //fightMonster(p);
+    } while (!p.isDead());
 
-    // victory or defeat
-/*    if (p.hasWon())
-    {
-        std::cout << "You have claimed final victory over your foes!\n";
-        std::cout << "With " << p.getGold() << " gold, you have more than enough to begin building your own kingdom!\n";
-    }
-    else */ if (p.isDead())
+if (p.isDead())
     {
         std::cout << "You died at level " << p.getLevel() << " and with " << p.getGold() << " gold.\n";
         std::cout << "You can only hope that finding the treasure you left behind will become a small part of some greater hero's legend!";

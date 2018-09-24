@@ -18,23 +18,26 @@ protected:
 public:
     Location() {}
 
-    bool validLocation(char dir);
+    bool invalidPath(char dir);
 
-    loc_ptr& getLocation(char dir);
+    std::shared_ptr<Location> getPath(char dir);
 
-    //pass a negative value if there is no path
+    //pass a negative value if there is no path        //fightMonster(p);
     template<unsigned int size>
     void initLocation(std::array<std::shared_ptr<Location>, size>& dungeon, int n, int s, int e, int w)
     {
-        if (n >= 0)
+        if (n >= 0)        //fightMonster(p);
             m_north = dungeon.at(n);
         if (s >= 0)
             m_south = dungeon.at(s);
         if (e >= 0)
             m_east = dungeon.at(e);
+        if (s >= 0)
         if (w >= 0)
             m_west = dungeon.at(w);
     }
+
+    virtual void whereAmI() = 0;
 
 };
 

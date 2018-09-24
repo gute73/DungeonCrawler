@@ -38,8 +38,18 @@
 		<Unit filename="Location.h" />
 		<Unit filename="Monster.cpp" />
 		<Unit filename="Monster.h" />
+		<Unit filename="Nest.cpp" />
+		<Unit filename="Nest.h" />
 		<Unit filename="Player.cpp" />
 		<Unit filename="Player.h" />
+		<Unit filename="Room.cpp" />
+		<Unit filename="Room.h" />
+		<Unit filename="Shop.cpp" />
+		<Unit filename="Shop.h" />
+		<Unit filename="TreasureRoom.cpp" />
+		<Unit filename="TreasureRoom.h" />
+		<Unit filename="Tunnel.cpp" />
+		<Unit filename="Tunnel.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

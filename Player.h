@@ -2,6 +2,9 @@
 #define PLAYER_H
 
 #include "Creature.h"
+#include "Location.h"
+#include <memory>
+#include <string>
 
 class Player: public Creature
 {
@@ -14,6 +17,8 @@ private:
     int m_dexterity;
     int m_constitution;
     int m_agility;
+    std::shared_ptr<Location> m_location;
+    char m_direction;
 
 public:
     enum CharClass
@@ -46,7 +51,7 @@ public:
 
     double calcProbDodge(int agi);
 
-    Player(std::string &name, int char_class);
+    Player(std::string &name, int char_class, std::shared_ptr<Location> pos);
 
     void levelUp();
 
@@ -66,6 +71,10 @@ public:
 
     int getAgi() const { return m_agility; }
 
+    std::shared_ptr<Location>& getLocation() { return m_location; }
+
+    char getDirection() const { return m_direction; }
+
     void setAttack(int str);
 
     void setDefense(int con);
@@ -73,6 +82,17 @@ public:
     void setProbCrit(int dex);
 
     void setProbDodge(int agi);
+
+    char left();
+
+    char right();
+
+    char behind();
+
+    // accepts char 'l' or 'r' or 'b'
+    void changeDirection(char turn);
+
+    void movePlayer();
 
 };
 

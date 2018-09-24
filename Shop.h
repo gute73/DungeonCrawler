@@ -5,6 +5,8 @@
 
 class Shop: public Location
 {
+public:
+    virtual void whereAmI();
 
 };
 

@@ -6,6 +6,8 @@
 class Tunnel: public Location
 {
 public:
+    virtual void whereAmI();
+
 
 };
 

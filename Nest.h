@@ -5,6 +5,8 @@
 
 class Nest: public Location
 {
+public:
+    virtual void whereAmI();
 
 };
 

@@ -6,6 +6,7 @@
 class TreasureRoom: public Location
 {
 public:
+    virtual void whereAmI();
 
 };
 
