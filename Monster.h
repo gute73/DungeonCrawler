@@ -8,9 +8,10 @@ class Monster: public Creature
 public:
     enum MonsterType
     {
-        MONSTERTYPE_DRAGON,
+        MONSTERTYPE_WYVERN,
         MONSTERTYPE_ORC,
         MONSTERTYPE_SLIME,
+        MONSTERTYPE_DRAGON,
         MONSTERTYPE_MAX_TYPES
     };
 

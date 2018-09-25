@@ -49,9 +49,9 @@ void attackMonster(Player &p, Monster &m)
                 std::cout << "Critical hit! ";
             std::cout << "You hit the " << m.getName() << " for " << damage << " damage.\n";
         }
+        else
+            std::cout << "The " << m.getName() << " dodged your attack!\n";
     }
-    else
-        std::cout << "The " << m.getName() << " dodged your attack!\n";
 }
 
 void attackPlayer(Player &p, Monster &m)
@@ -68,6 +68,11 @@ void attackPlayer(Player &p, Monster &m)
     }
     else
         std::cout << "You dodged the attack!\n";
+}
+
+bool randomEncounter()
+{
+    return getRandomNumber(1, 100) <= 75;
 }
 
 void fightMonster(Player &p)
@@ -188,7 +193,8 @@ int main()
     do
     {
         p.movePlayer();
-        //fightMonster(p);
+        if (randomEncounter())
+            fightMonster(p);
     } while (!p.isDead());
 
 if (p.isDead())

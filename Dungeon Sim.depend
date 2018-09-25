@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1537219507 source:c:\users\mark\cprojects\dungeon sim\creature.cpp
+1537899677 source:c:\users\mark\cprojects\dungeon sim\creature.cpp
 	"Creature.h"
 
 1537578654 c:\users\mark\cprojects\dungeon sim\creature.h
@@ -13,7 +13,7 @@
 	<memory>
 	<array>
 
-1537819533 source:c:\users\mark\cprojects\dungeon sim\main.cpp
+1537900131 source:c:\users\mark\cprojects\dungeon sim\main.cpp
 	<iostream>
 	<string>
 	<cstdlib>
@@ -31,7 +31,7 @@
 	"TreasureRoom.h"
 	"Nest.h"
 
-1537219581 c:\users\mark\cprojects\dungeon sim\monster.h
+1537899086 c:\users\mark\cprojects\dungeon sim\monster.h
 	"Creature.h"
 
 1537816263 c:\users\mark\cprojects\dungeon sim\player.h
@@ -40,7 +40,7 @@
 	<memory>
 	<string>
 
-1537218248 source:c:\users\mark\cprojects\dungeon sim\monster.cpp
+1537899374 source:c:\users\mark\cprojects\dungeon sim\monster.cpp
 	"Monster.h"
 
 1537892532 source:c:\users\mark\cprojects\dungeon sim\player.cpp
