@@ -32,7 +32,6 @@ public:
             m_south = dungeon.at(s);
         if (e >= 0)
             m_east = dungeon.at(e);
-        if (s >= 0)
         if (w >= 0)
             m_west = dungeon.at(w);
     }

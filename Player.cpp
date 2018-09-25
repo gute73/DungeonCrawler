@@ -154,7 +154,7 @@ void Player::movePlayer()
     bool inv_right = m_location->invalidPath(right());
     bool inv_behind = m_location->invalidPath(behind());
     char choice;
-    bool valid = true;
+    bool valid;
     do
     {
         if (!inv_ahead)
@@ -170,6 +170,7 @@ void Player::movePlayer()
             std::cout << "There is a path to the right.\n";
         std::cout << "Enter 'a' to move ahead, 'l' to move left, 'r' to move right, or 'b' to turn around and move back.\n";
         std::cin >> choice;
+        valid = true;
         switch (choice)
         {
             case 'a': case 'A':
